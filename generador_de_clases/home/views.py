@@ -74,10 +74,10 @@ def separa_styles(request):
 
 
     for a in filtered:
-
+        class_add += 1
         #Solo los que tengan style y class
         if a.find('class') != -1 and a.find('style=') != -1:
-            class_add += 1
+
 
             # Busca style y lo separa para mostrar en css
             select_style = re.compile('style=".*?"')
@@ -108,7 +108,7 @@ def separa_styles(request):
 
         #Solo el que tenga style
         elif a.find('style=') != -1:
-            class_add += 1
+            #class_add += 1
             select_style = re.compile('style=".*?"')
             search_style = select_style.findall(a)
             if str(search_style[0])[-2:-1] != ';':
@@ -132,5 +132,6 @@ def separa_styles(request):
 
 
 def ver_styles(request):
+
     global new_class
     return HttpResponse(new_class)
