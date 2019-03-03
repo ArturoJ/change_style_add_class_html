@@ -74,9 +74,36 @@ def separa_styles(request):
 
 
     for a in filtered:
+
         #Solo los que tengan style y class
         if a.find('class') != -1 and a.find('style=') != -1:
-            pass
+            class_add += 1
+
+            # Busca style y lo separa para mostrar en css
+            select_style = re.compile('style=".*?"')
+            search_style = select_style.findall(a)
+            if str(search_style[0])[-2:-1] != ';':
+                add_style_css = str(search_style[0])[7:-1] + ';'
+            else:
+                add_style_css = str(search_style[0])[7:-1]
+            new_class += '''.clas_pers_''' + str(class_add) + '''{
+    ''' + str(add_style_css) + '''
+}
+
+'''
+            # Agrega a las clases actuales las nuevas
+            select_class= re.compile('class=".*?"')
+            search_class = select_class.findall(a)
+            add_class = str(search_class[0])[:-1] + ' clas_pers_' + str(class_add) + '"'
+
+            select_clear = re.compile('class=".*?"')
+            cleaner_text = re.sub(select_clear, add_class, a)
+            a = cleaner_text
+
+            select_clear = re.compile('style=".*?"')
+            cleaner_text = re.sub(select_clear, '', a)
+            a = cleaner_text
+
 
 
         #Solo el que tenga style
