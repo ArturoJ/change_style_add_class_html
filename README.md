@@ -42,6 +42,6 @@ Hay 4 textarea y tres botones:
 
 3º -> Pulse el botón ``Paso 2``
 
-4º -> Pulse el botón ``Pase 3``
+4º -> Pulse el botón ``Paso 3``
 
 Para ver lo que realiza cada botón puede copiar el contenido de los textarea y ver como lo formatea en cada paso.
