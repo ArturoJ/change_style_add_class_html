@@ -7,15 +7,21 @@ Por ejemplo:
 
 ``<div style=”color: #ffffff”>Texto de prueba</div>``
 
+
 Y lo convierte en lo siguiente:
 
 ``<div class="clas_pers_1">``
+
 ``Texto de prueba``
+
 ``</div>``
 
 ``.clas_pers_1{``
+
 ``    color: #ffffff; ``
+
 ``}``
+
 
 Tenga en cuenta que está desarrollado con:
 - Django >= 2.1.7
