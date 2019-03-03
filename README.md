@@ -5,7 +5,7 @@ Proyecto sencillo que sustituye los style="" dentro de un código html por clase
 
 Por ejemplo:
 
-``<div style=”color: #ffffff”>Texto de prueba</div>``
+``<div style="color: #ffffff">Texto de prueba</div>``
 
 
 Y lo convierte en lo siguiente:
