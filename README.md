@@ -31,3 +31,17 @@ Tenga en cuenta que está desarrollado con:
 - Django >= 2.1.7
 
 
+Funcionamiento
+==================
+
+Hay 4 textarea y tres botones:
+
+1º -> Coloque el su código html en texto plano en el primer textarea
+
+2º -> Pulse el botón ``Paso 1``
+
+3º -> Pulse el botón ``Paso 2``
+
+4º -> Pulse el botón ``Pase 3``
+
+Para ver lo que realiza cada botón puede copiar el contenido de los textarea y ver como lo formatea en cada paso.
