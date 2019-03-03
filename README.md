@@ -45,3 +45,8 @@ Hay 4 textarea y tres botones:
 4º -> Pulse el botón ``Paso 3``
 
 Para ver lo que realiza cada botón puede copiar el contenido de los textarea y ver como lo formatea en cada paso.
+
+
+Captura
+==================
+![IMG demo](https://raw.githubusercontent.com/ArturoJ/change_style_add_class_html/master/captura.jpg)
