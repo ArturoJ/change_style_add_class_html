@@ -11,6 +11,7 @@ Por ejemplo:
 Y lo convierte en lo siguiente:
 
 Código HTML:
+
 ``<div class="clas_pers_1">``
 
 ``Texto de prueba``
@@ -18,6 +19,7 @@ Código HTML:
 ``</div>``
 
 Código CSS:
+
 ``.clas_pers_1{``
 
 ``    color: #ffffff; ``
