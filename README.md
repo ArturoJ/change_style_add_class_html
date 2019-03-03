@@ -20,7 +20,7 @@ Código HTML:
 
 Código CSS:
 
-``.clas_pers_1{``
+``.clas_pers_1 {``
 
 ``    color: #ffffff; ``
 
