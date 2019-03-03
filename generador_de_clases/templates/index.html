@@ -1,0 +1,204 @@
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+        table.blueTable {
+            border: 1px solid #1C6EA4;
+            background-color: #EEEEEE;
+            width: 100%;
+            text-align: center;
+            border-collapse: collapse;
+        }
+
+        table.blueTable td,
+        table.blueTable th {
+            border: 1px solid #AAAAAA;
+            padding: 3px 3px;
+        }
+
+        table.blueTable tbody td {
+            font-size: 13px;
+        }
+
+        table.blueTable tr:nth-child(even) {
+            background: #D0E4F5;
+        }
+
+        table.blueTable thead {
+            background: #1C6EA4;
+            background: -moz-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+            background: -webkit-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+            background: linear-gradient(to bottom, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+            border-bottom: 2px solid #444444;
+        }
+
+        table.blueTable thead th {
+            font-size: 15px;
+            font-weight: bold;
+            color: #FFFFFF;
+            text-align: center;
+            border-left: 2px solid #D0E4F5;
+        }
+
+        table.blueTable thead th:first-child {
+            border-left: none;
+        }
+
+        table.blueTable tfoot {
+            font-size: 14px;
+            font-weight: bold;
+            color: #FFFFFF;
+            background: #D0E4F5;
+            background: -moz-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+            background: -webkit-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+            background: linear-gradient(to bottom, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+            border-top: 2px solid #444444;
+        }
+
+        table.blueTable tfoot td {
+            font-size: 14px;
+        }
+
+        table.blueTable tfoot .links {
+            text-align: right;
+        }
+
+        table.blueTable tfoot .links a {
+            display: inline-block;
+            background: #1C6EA4;
+            color: #FFFFFF;
+            padding: 2px 8px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <table class="blueTable">
+        <thead>
+            <tr>
+                <th>
+                    <br>
+                </th>
+                <th>
+                    <br>
+                </th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <td colspan="2">
+                    <br>
+                </td>
+            </tr>
+        </tfoot>
+        <tbody>
+            <tr>
+                <td>
+                    <h2>Codigo HTML</h2>
+                    <br>
+                    <br>
+                    <form action="" method="post">{% csrf_token %}
+                        <textarea name="textarea" id="foo" rows="10" cols="50">Pegar codigo html</textarea>
+                        <br>
+                        <button id="boton_base" class="btn bg-success">Paso 1</button>
+                    </form>
+                    <br>
+                </td>
+                <td>
+                    <h2>Codigo formateado HTML</h2>
+                    <form action="" method="post">{% csrf_token %}
+                        <textarea name="textarea" id="foo2" rows="10" cols="50"></textarea>
+                        <br>
+                        <button id="boton_style" class="btn bg-success">Paso 2</button>
+                    </form>
+                    <br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h2>Codigo limpio de style</h2>
+                    <br>
+                    <br>
+                    <form action="" method="post">{% csrf_token %}
+                        <textarea name="textarea" id="foo3" rows="10" cols="50"></textarea>
+                        <br>
+                        <button id="boton_ver_style" class="btn bg-success">Paso 3</button>
+                    </form>
+                    <br>
+                </td>
+                <td>
+                    <h2>Codigo CSS</h2>
+                    <textarea name="textarea" id="foo4" rows="10" cols="50"></textarea>
+                    <br>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        $(document).ready(function() {
+            $(document).on('click', '#boton_base', function(e) {
+                e.preventDefault();
+                var foo = $('#foo').val();
+                var parametros = {
+                    "foo": foo,
+                    "csrfmiddlewaretoken": '{{ csrf_token }}'
+                };
+                $.ajax({
+                    data: parametros,
+                    url: 'leer_datos',
+                    type: 'post',
+                    beforeSend: function() {
+                        $("#resultado_info_air").html("Procesando, espere por favor...");
+                    },
+                    success: function(response) {
+                        document.getElementById('foo2').value = response;
+                    }
+                })
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $(document).on('click', '#boton_style', function(e) {
+                e.preventDefault();
+                var foo2 = $('#foo2').val();
+                var parametros = {
+                    "foo2": foo2,
+                    "csrfmiddlewaretoken": '{{ csrf_token }}'
+                };
+                $.ajax({
+                    data: parametros,
+                    url: 'separa_styles',
+                    type: 'post',
+                    beforeSend: function() {
+                        $("#resultado_info_air").html("Procesando, espere por favor...");
+                    },
+                    success: function(response) {
+                        document.getElementById('foo3').value = response;
+                    }
+                })
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $(document).on('click', '#boton_ver_style', function(e) {
+                e.preventDefault();
+                var parametros = {
+                    "csrfmiddlewaretoken": '{{ csrf_token }}'
+                };
+                $.ajax({
+                    data: parametros,
+                    url: 'ver_styles',
+                    type: 'post',
+                    beforeSend: function() {
+                        $("#resultado_info_air").html("Procesando, espere por favor...");
+                    },
+                    success: function(response) {
+                        document.getElementById('foo4').value = response;
+                    }
+                })
+            });
+        });
+    </script>
+</body>
